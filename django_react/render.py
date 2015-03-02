@@ -21,9 +21,9 @@ RENDER_CACHE = {}
 def get_cache_key(path_to_source, render_to, serialized_props=None):
     md5 = hashlib.md5()
     if serialized_props is None:
-        md5.update('')
+        md5.update(''.encode('utf-8'))
     else:
-        md5.update(serialized_props)
+        md5.update(serialized_props.encode('utf-8'))
     return 'django_react-{path_to_source}-{render_to}-{props_hash}'.format(
         path_to_source=path_to_source,
         render_to=render_to,
